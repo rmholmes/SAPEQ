@@ -3,16 +3,18 @@
 #PBS -P e14
 #PBS -l ncpus=192
 #PBS -l mem=150GB
-#PBS -l walltime=04:00:00
+#PBS -l walltime=01:00:00
 #PBS -l wd
 #PBS -q normal
 #PBS -M r.holmes@unsw.edu.au
 #PBS -l storage=scratch/e14+gdata/e14
 #PBS -m e
-#PBS -e /scratch/e14/rmh561/ROMS/SAPEQ/pbs_sapeq.err
-#PBS -o /scratch/e14/rmh561/ROMS/SAPEQ/pbs_sapeq.out
+#PBS -e OUT/pbs_sapeq.err
+#PBS -o OUT/pbs_sapeq.out
 
-module load netcdf
+module load intel-compiler/2019.5.281
+module load netcdf/4.7.1
+module load openmpi/4.0.1
 
 mpirun -np 192 oceanM sapeq_ABLMe.in > OUT/sapeq_ABLMe.out
 
