@@ -1,0 +1,17 @@
+#!/bin/bash
+#PBS -N SAPEQablm
+#PBS -P e14
+#PBS -l ncpus=192
+#PBS -l mem=150GB
+#PBS -l walltime=04:00:00
+#PBS -l wd
+#PBS -q normal
+#PBS -M ryan.holmes@unsw.edu.au
+#PBS -m e
+#PBS -e /scratch/e14/rmh561/ROMS/SAPEQ/pbs_sapeq.err
+#PBS -o /scratch/e14/rmh561/ROMS/SAPEQ/pbs_sapeq.out
+
+module load netcdf
+
+mpirun -np 192 oceanM sapeq_ABLMe.in > OUT/sapeq_ABLMe.out
+
