@@ -6,7 +6,8 @@
 #PBS -l walltime=04:00:00
 #PBS -l wd
 #PBS -q normal
-#PBS -M ryan.holmes@unsw.edu.au
+#PBS -M r.holmes@unsw.edu.au
+#PBS -l storage=scratch/e14+gdata/e14
 #PBS -m e
 #PBS -e /scratch/e14/rmh561/ROMS/SAPEQ/pbs_sapeq.err
 #PBS -o /scratch/e14/rmh561/ROMS/SAPEQ/pbs_sapeq.out

@@ -189,7 +189,8 @@ ad_VolCons(north) ==  F                            ! northern boundary
 ! Time-Stepping parameters.
 
 !      NTIMES == 259200             ! First 5 years of 10 year spinup
-      NTIMES == 570240             ! last year ABLM
+      NTIMES == 570240             ! last year of 11 year ABLM
+      NTIMES == 574560             ! Add 30 days
           DT == 600.0d0
      NDTFAST == 10
 
@@ -818,7 +819,7 @@ Dout(iTvdif) == T T     ! temp_vdiff, ...    vertical diffusion
 ! Input NetCDF file names, [1:Ngrids].
 
      GRDNAME == INI/ocean_grd_v3.nc
-     ININAME == OUT/ocean_rst_ABLM.nc
+     ININAME == INI/ocean_rst_ABLM.nc
      ITLNAME == ocean_itl.nc
      IRPNAME == ocean_irp.nc
      IADNAME == ocean_iad.nc
