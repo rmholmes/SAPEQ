@@ -190,7 +190,7 @@ ad_VolCons(north) ==  F                            ! northern boundary
 
 !      NTIMES == 259200             ! First 5 years of 10 year spinup
       NTIMES == 570240             ! last year of 11 year ABLM
-      NTIMES == 574560             ! Add 30 days
+      NTIMES == 622080             ! Add another year
           DT == 600.0d0
      NDTFAST == 10
 
@@ -214,23 +214,23 @@ ad_VolCons(north) ==  F                            ! northern boundary
 
        NRREC == -1
    LcycleRST == T
-        NRST == 432
-        NSTA == 432   
-        NFLT == 432 
+        NRST == 144
+        NSTA == 144   
+        NFLT == 144 
        NINFO == 36
 
 ! Output history, average, diagnostic files parameters.
       
      LDEFOUT == T
-        NHIS == 432
+        NHIS == 144
      NDEFHIS == 0  
-        NQCK == 432
+        NQCK == 144
      NDEFQCK == 0
       NTSAVG == 1
-        NAVG == 432
+        NAVG == 144
      NDEFAVG == 0
       NTSDIA == 1
-        NDIA == 432
+        NDIA == 144
      NDEFDIA == 0
 
 ! Output tangent linear and adjoint models parameters.
@@ -631,7 +631,7 @@ Aout(idu2dE) == F       ! ubar_eastward      2D U-eastward  at RHO-points
 Aout(idv2dN) == F       ! vbar_northward     2D V-northward at RHO-points
 Aout(idFsur) == T       ! zeta               free-surface
 
-Aout(idpthR) == F       ! z_rho              time-varying depths of RHO-points
+Aout(idpthR) == T       ! z_rho              time-varying depths of RHO-points
 Aout(idpthU) == F       ! z_u                time-varying depths of U-points
 Aout(idpthV) == F       ! z_v                time-varying depths of V-points
 Aout(idpthW) == F       ! z_w                time-varying depths of W-points
@@ -677,14 +677,14 @@ Aout(idLrad) == T       ! lwrad              longwave radiation flux
 Aout(idTair) == T       ! Tair               atmospheric air temperature
 Aout(idQair) == T       ! Qair               atmospheric water vapor
 Aout(idSrad) == T       ! swrad              shortwave radiation flux
-Aout(idEmPf) == F       ! EminusP            E-P flux
+Aout(idEmPf) == T       ! EminusP            E-P flux
 Aout(idevap) == F       ! evaporation        evaporation rate
 Aout(idrain) == F       ! rain               precipitation rate
 Aout(idHbly) == F       ! blh                atmospheric boundary layer depth
 
 Aout(idDano) == F       ! rho                density anomaly
 Aout(idVvis) == F       ! AKv                vertical viscosity
-Aout(idTdif) == F       ! AKt                vertical T-diffusion
+Aout(idTdif) == T       ! AKt                vertical T-diffusion
 Aout(idSdif) == F       ! AKs                vertical Salinity diffusion
 Aout(idHsbl) == T       ! Hsbl               depth of surface boundary layer
 Aout(idHbbl) == F       ! Hbbl               depth of bottom boundary layer
@@ -702,8 +702,8 @@ Aout(idFsuD) == F       ! zeta_detided       detided free-surface
 
 Aout(idTrcD) == F F     ! temp_detided, ...  detided temperature and salinity
 
-Aout(idHUav) == F       ! Huon               u-volume flux, Huon
-Aout(idHVav) == F       ! Hvom               v-volume flux, Hvom
+Aout(idHUav) == T       ! Huon               u-volume flux, Huon
+Aout(idHVav) == T       ! Hvom               v-volume flux, Hvom
 Aout(idUUav) == F       ! uu                 quadratic <u*u> term
 Aout(idUVav) == F       ! uv                 quadratic <u*v> term
 Aout(idVVav) == F       ! vv                 quadratic <v*v> term
@@ -714,8 +714,8 @@ Aout(idZZav) == F       ! zeta2              quadratic <zeta*zeta> term
 Aout(idTTav) == F F     ! temp_2, ...        quadratic <t*t> tracer terms
 Aout(idUTav) == F F     ! u_temp, ...        quadratic <u*t> tracer terms
 Aout(idVTav) == F F     ! v_temp, ...        quadratic <v*t> tracer terms
-Aout(iHUTav) == F F     ! Huon_temp, ...     tracer volume flux, <Huon*t>
-Aout(iHVTav) == F F     ! Hvom_temp, ...     tracer volume flux, <Hvom*t>
+Aout(iHUTav) == T T     ! Huon_temp, ...     tracer volume flux, <Huon*t>
+Aout(iHVTav) == T T     ! Hvom_temp, ...     tracer volume flux, <Hvom*t>
 
 ! Logical switches (TRUE/FALSE) to activate writing of extra inert passive
 ! tracers other than biological and sediment tracers into the AVERAGE file.
