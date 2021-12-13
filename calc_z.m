@@ -4,7 +4,7 @@
 addpath(genpath('~/software/matlab-utilities/'));
 startup;
 
-dozvzu = 1;
+dozvzu = 0;
 
 % Create variable:
 ncid = netcdf.open(fname,'NC_WRITE');
@@ -20,10 +20,12 @@ if (not_there)
     netcdf.reDef(ncid);
 
     zrhoID = netcdf.defVar(ncid,'z_rho','NC_DOUBLE',[xid yid zrid tid]);
+    netcdf.defVarDeflate(ncid,zrhoID,true,true,5);
     netcdf.putAtt(ncid,zrhoID,'long_name','Height at rho-points');
     netcdf.putAtt(ncid,zrhoID,'units','m');
 
     zwID = netcdf.defVar(ncid,'z_w','NC_DOUBLE',[xid yid zwid tid]);
+    netcdf.defVarDeflate(ncid,zwID,true,true,5);
     netcdf.putAtt(ncid,zwID,'long_name','Height at w-points');
     netcdf.putAtt(ncid,zwID,'units','m');
 
@@ -48,10 +50,12 @@ if (not_there)
     netcdf.reDef(ncid);
 
     zvID = netcdf.defVar(ncid,'z_v','NC_DOUBLE',[xvid yvid zrid tid]);
+    netcdf.defVarDeflate(ncid,zvID,true,true,5);
     netcdf.putAtt(ncid,zvID,'long_name','Height at v-points');
     netcdf.putAtt(ncid,zvID,'units','m');
 
     zuID = netcdf.defVar(ncid,'z_u','NC_DOUBLE',[xuid yuid zrid tid]);
+    netcdf.defVarDeflate(ncid,zuID,true,true,5);
     netcdf.putAtt(ncid,zuID,'long_name','Height at u-points');
     netcdf.putAtt(ncid,zuID,'units','m');
 
@@ -70,12 +74,11 @@ zL = length(ncread(fname,'s_rho'));
 
 for ti=1:tL
     ['Doing time ' num2str(ti) ' of ' num2str(tL)]
-% $$$     zeta = ncread(fname,'zeta',[1 1 ti],[xL yL 1]);
-% $$$     [z_rho,z_w] = ROMS_depths(fname,zeta,h);
-% $$$ 
-% $$$     netcdf.putVar(ncid,zrhoID,[0 0 0 ti-1],[xL yL zL 1],z_rho);
-% $$$     netcdf.putVar(ncid,zwID,[0 0 0 ti-1],[xL yL zL+1 1],z_w);
-    z_rho = ncread(fname,'z_rho',[1 1 1 ti],[xL yL zL 1]);
+    zeta = ncread(fname,'zeta',[1 1 ti],[xL yL 1]);
+    [z_rho,z_w] = ROMS_depths(fname,zeta,h);
+
+    netcdf.putVar(ncid,zrhoID,[0 0 0 ti-1],[xL yL zL 1],z_rho);
+    netcdf.putVar(ncid,zwID,[0 0 0 ti-1],[xL yL zL+1 1],z_w);
     
     if (dozvzu == 1)
         z_v = (z_rho(:,1:(end-1),:)+z_rho(:,2:end,:))/2;
