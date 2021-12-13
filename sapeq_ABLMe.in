@@ -189,8 +189,9 @@ ad_VolCons(north) ==  F                            ! northern boundary
 ! Time-Stepping parameters.
 
 !      NTIMES == 259200             ! First 5 years of 10 year spinup
-      NTIMES == 570240             ! last year of 11 year ABLM
-      NTIMES == 622080             ! Add another year
+!      NTIMES == 570240             ! last year of 11 year ABLM
+!      NTIMES == 622080             ! Add another year
+      NTIMES == 578880             ! Add another two months (testing)
           DT == 600.0d0
      NDTFAST == 10
 
@@ -768,7 +769,10 @@ Dout(iThdif) == F F     ! temp_hdiff, ...    horizontal total diffusion
 Dout(iTxdif) == F F     ! temp_xdiff, ...    horizontal XI-diffusion
 Dout(iTydif) == F F     ! temp_ydiff, ...    horizontal ETA-diffusion
 Dout(iTsdif) == F F     ! temp_sdiff, ...    horizontal S-diffusion
-Dout(iTvdif) == T T     ! temp_vdiff, ...    vertical diffusion
+Dout(iTvdif) == T F     ! temp_vdiff, ...    vertical diffusion
+Dout(iTvdifDIF) == T F     ! temp_vdiffDIF, ...    vertical diffusion, diffusion
+Dout(iTvdifNOL) == T F     ! temp_vdiffNOL, ...    vertical diffusion, KPP nonlocal
+Dout(iTvdifSHF) == T F     ! temp_vdiffSHF, ...    vertical diffusion, surface forcing
 
 ! Generic User parameters, [1:NUSER].
 

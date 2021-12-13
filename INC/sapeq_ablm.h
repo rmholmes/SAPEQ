@@ -46,6 +46,7 @@
 #undef FLOATS
 #undef DIAGNOSTICS_UV
 #define DIAGNOSTICS_TS
+#define DIAGNOSTICS_TS_VDIF
 #undef STATIONS
 #define AVERAGES
 
