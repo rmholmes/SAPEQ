@@ -191,7 +191,8 @@ ad_VolCons(north) ==  F                            ! northern boundary
 !      NTIMES == 259200             ! First 5 years of 10 year spinup
 !      NTIMES == 570240             ! last year of 11 year ABLM
 !      NTIMES == 622080             ! Add another year
-      NTIMES == 578880             ! Add another two months (testing)
+!      NTIMES == 578880             ! Add another two months (testing)
+      NTIMES == 596160             ! Add another six months (testing)
           DT == 600.0d0
      NDTFAST == 10
 

@@ -80,6 +80,7 @@
 #undef SVD_ENSO /* Use SVD modes for STATS_ENSO */
 
 #define BULK_FLUXES
+#define SOLAR_SOURCE
 
 #define SET_WINDSPEED /* Set wind speed magnitude separately from Uwind and Vwind */
 #undef SET_WINDQUAD
