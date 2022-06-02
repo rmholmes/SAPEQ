@@ -3,7 +3,7 @@
 #PBS -P e14
 #PBS -l ncpus=192
 #PBS -l mem=150GB
-#PBS -l walltime=00:45:00
+#PBS -l walltime=01:30:00
 #PBS -l wd
 #PBS -q normal
 #PBS -M r.holmes@unsw.edu.au

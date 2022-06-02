@@ -8,24 +8,25 @@ dozvzu = 0;
 
 % Create variable:
 ncid = netcdf.open(fname,'NC_WRITE');
-try
-    id = netcdf.inqVarID(ncid,'z_rho');
-    not_there = 0;
-catch
+% $$$ try
+% $$$     id = netcdf.inqVarID(ncid,'z_rho');
+% $$$     not_there = 0;
+% $$$ catch
     not_there = 1;
-end
+% $$$ end
 %If variable not there, add it:
 if (not_there)
     xid = netcdf.inqDimID(ncid,'xi_rho');yid = netcdf.inqDimID(ncid,'eta_rho');zrid = netcdf.inqDimID(ncid,'s_rho');zwid = netcdf.inqDimID(ncid,'s_w');tid = netcdf.inqDimID(ncid,'ocean_time');
     netcdf.reDef(ncid);
 
-    zrhoID = netcdf.defVar(ncid,'z_rho','NC_DOUBLE',[xid yid zrid tid]);
-    netcdf.defVarDeflate(ncid,zrhoID,true,true,5);
+    zrhoID = netcdf.inqVarID(ncid,'z_rho');
+% $$$     zrhoID = netcdf.defVar(ncid,'z_rho','NC_DOUBLE',[xid yid zrid tid]);
+    %    netcdf.defVarDeflate(ncid,zrhoID,true,true,5);
     netcdf.putAtt(ncid,zrhoID,'long_name','Height at rho-points');
     netcdf.putAtt(ncid,zrhoID,'units','m');
 
     zwID = netcdf.defVar(ncid,'z_w','NC_DOUBLE',[xid yid zwid tid]);
-    netcdf.defVarDeflate(ncid,zwID,true,true,5);
+    %    netcdf.defVarDeflate(ncid,zwID,true,true,5);
     netcdf.putAtt(ncid,zwID,'long_name','Height at w-points');
     netcdf.putAtt(ncid,zwID,'units','m');
 

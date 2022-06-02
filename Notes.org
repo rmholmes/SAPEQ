@@ -1,0 +1,25 @@
+Rerunning ABLM SAPEQ run November 2021 for various projects.
+
+Setup to run easily on Gadi. To compile do ./compile_ROMS.sh. To run
+do qsub pbs_sapeq_ABLMe.sub
+
+** KPP BL depth noise 22/11/2021:
+
+This seems to be a big problem in these runs. It's most obvious in the
+vertical diffusion field. 
+
+However, the most prominent signal is actually a high-frequency wave
+signal along the Equator that is not a single grid cell wide. I've
+seen this before and thought it was physical (or associated with a
+particular advection scheme???) I must have made some notes somewhere
+(FIND THEM!). 
+
+Also a useful reference is the github issue for the same thing in
+ACCESS-OM2: https://github.com/COSIMA/access-om2/issues/110
+
+CROCO uses different advection schemes (rotated upstream 3rd order for
+tracers) and what looks like a re-write of the KPP scheme (but from
+2005). Might be worth investigating as the quick 1/4-degree simulation
+I did with CROCO had no signs of these issues.
+
+Would going to higher resolution help??
